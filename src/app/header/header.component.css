@@ -1,0 +1,41 @@
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #222;
+  color: #fff;
+}
+
+.logo-and-name {
+  display: flex; 
+  align-items:center; 
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.app-name {
+  margin: 0;
+}
+
+.settings-icon {
+  cursor: pointer;
+  font-size: 25px;
+  margin-right: 10px;
+
+}
+.settings-icon:hover{
+  animation: rotate 5s linear infinite;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

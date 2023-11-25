@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+/* styles.scss or styles.css */
+/* styles.scss or styles.css */
+
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;  background: #ffffff; overflow: visible;}
+ 
+.skewed-bg {
+    
+    background: #222;
+    padding: 500px;
+    transform: skew(0deg, -15deg);
+    margin-top: 800px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+  }
+  
+
+ 

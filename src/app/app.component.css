@@ -1,0 +1,41 @@
+body, html{
+    margin: 20px; /* Adjust as needed for the desired margin */
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent scrolling */
+    background-color: red;
+}
+
+.container{
+    position: fixed;
+    top: 70px; 
+  left: 70px; 
+  right: 70px; 
+  bottom: 70px; 
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  
+}
+/* Set a background color */
+
+.skewed-bg {
+  background: #00b285;
+  padding: 200px 0;
+  transform: skew(0deg, -10deg);
+  margin-top: -200px;
+}
+.skewed-bg .content {
+  transform: skew(0deg, 10deg);
+  text-align: center;
+}
+.skewed-bg .content .title {
+  padding-top: 100px;
+  font-weight: normal;
+}
+.skewed-bg .content .text {
+  width: 60%;
+  margin: 25px auto;
+  color: #ccfff2;
+}
+/* Set a background image */
