@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Organization } from '../organization';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PopUpFolderComponent } from '../pop-up-folder/pop-up-folder.component';
 import { DialogConfig } from '@angular/cdk/dialog';
-
+import { OrganizationService } from '../organization.service';
 
 @Component({
   selector: 'app-main',
@@ -15,12 +15,12 @@ import { DialogConfig } from '@angular/cdk/dialog';
 })
 
 
-export class MainComponent {
+export class MainComponent implements OnInit {
   
+  data:any[]=[]
+  constructor(private dialogRef: MatDialog,private organization:OrganizationService){}
 
-  constructor(private dialogRef: MatDialog){}
-
-  openDialog(organization: Organization): void{
+  openDialog(organization:any): void{
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.width = '60%'; 
@@ -29,17 +29,30 @@ export class MainComponent {
     this.dialogRef.open(PopUpFolderComponent,dialogConfig);
   }
 //this will be changed with api calls
-arrayOfOrganization: Organization[] =[
-  {name:'mmg',isStatusPageAvailable:false,isOncallAvailable:true},
-  {name:'armis',isStatusPageAvailable:true,isOncallAvailable:true},
-  {name:'logz.io',isOncallAvailable:true},
-  {name:'Moovingon',isOncallAvailable:true},
-  {name:'sixgil',isOncallAvailable:true},
-  {name:'Hunters',isOncallAvailable:true},
-  {name:'bolt',isOncallAvailable:false},
-  {name:'frontegg',isOncallAvailable:true},
-  {name:'avatrade',isOncallAvailable:false},
 
 
-]
+
+ngOnInit():void{
+
+  this.organization.getallorganization().subscribe((res)=> {
+    this.data=this.addIsOncallAvailableAttribute(res);
+    console.log(this.data)
+  })
+
+}
+  addIsOncallAvailableAttribute(data:any[]): any{
+    return data.map(item =>({
+      ...item,
+      isOncallAvailable: item.hasOwnProperty('isOncallAvailable') ? item.isOncallAvailable:true,
+    }))
+  }
+  shouldIgnore(organization:any):boolean{
+    const ignore =['Artlist.io','FeedVisor','GreenRoad','Sisense','Trafficpoint','Taboola','Milloh-CS']
+    return ignore.includes(organization.name)
+  }
+
+  filterArrayOfOrganizations(): any[]{
+    return this.data.filter(organization => !this.shouldIgnore(organization))
+  }
+
 }

@@ -14,8 +14,8 @@ import { JiraComponent } from '../jira/jira.component';
 export class PopUpFolderComponent {
   selectedComponent: number | null = null
   
-    @Input() organization: Organization;
-  constructor(@Inject(MAT_DIALOG_DATA) public data:{ organization: Organization }){
+    @Input() organization: any;
+  constructor(@Inject(MAT_DIALOG_DATA) public data:{ organization: any }){
     console.log('Received Data:', data);
      this.organization =this.data.organization;
      
