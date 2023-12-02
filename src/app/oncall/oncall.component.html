@@ -1,7 +1,27 @@
-<div class="name-with-indicator">
-  <span>User123</span>
-  <div class="online-indicator"></div>
-</div>
+<div *ngIf="loading; else loadedContent" class="loading-spinner"></div>
+
+<ng-template #loadedContent  >
+  <div *ngIf="oncallDetails" class="name-with-indicator">
+    <div class="Tier-select" style="width:100px;">
+      
+      <select>
+        
+        <option value="0">Tier 1</option>
+        <option value="1">Tier 2</option>
+        <option value="2">Tier 3</option>
+        <option value="3">Tier 4</option>
+      </select>
+    </div>
+    
+    <p>{{ oncallDetails.full_name }}</p>
+    <div class="online-indicator"></div>
+    
+  </div>
+  <div *ngIf="!oncallDetails">
+    <p>No matching contact found.</p>
+  </div>
+</ng-template>
+
 <div class="container">
     <div class="row">
       <div class="col-12">

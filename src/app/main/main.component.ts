@@ -35,24 +35,28 @@ export class MainComponent implements OnInit {
 ngOnInit():void{
 
   this.organization.getallorganization().subscribe((res)=> {
-    this.data=this.addIsOncallAvailableAttribute(res);
+    this.data=res.children;
     console.log(this.data)
   })
 
 }
-  addIsOncallAvailableAttribute(data:any[]): any{
-    return data.map(item =>({
-      ...item,
-      isOncallAvailable: item.hasOwnProperty('isOncallAvailable') ? item.isOncallAvailable:true,
-    }))
-  }
+  // addIsOncallAvailableAttribute(data:any[]): any{
+  //   return data.map(item =>({
+  //     ...item,
+  //     isOncallAvailable: item.hasOwnProperty('isOncallAvailable') ? item.isOncallAvailable:true,
+  //   }))
+  // }
   shouldIgnore(organization:any):boolean{
     const ignore =['Artlist.io','FeedVisor','GreenRoad','Sisense','Trafficpoint','Taboola','Milloh-CS']
     return ignore.includes(organization.name)
   }
 
   filterArrayOfOrganizations(): any[]{
+    if(Array.isArray(this.data)){
     return this.data.filter(organization => !this.shouldIgnore(organization))
+  }else{
+    console.error("this.data is not an array")
+    return[];
   }
-
+  }
 }

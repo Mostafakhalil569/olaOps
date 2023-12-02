@@ -1,9 +1,10 @@
 export interface Organization {
     name:String;
-    isStatusPageAvailable?:boolean;
-    isOncallAvailable?:boolean;
-    isJiraTicketAvailable?:boolean;
-    whoIsOncall?:object;  
+    id:number;
+    // isStatusPageAvailable?:boolean;
+    // isOncallAvailable?:boolean;
+    // isJiraTicketAvailable?:boolean;
+    // whoIsOncall?:object;  
 }
 export interface Parent {
     id: number;
@@ -14,4 +15,8 @@ export interface Parent {
   export interface Child {
     id: number;
     name: string;
+  }
+
+  export interface ExtendedObject extends Child{
+    isOncallAvailable:boolean
   }

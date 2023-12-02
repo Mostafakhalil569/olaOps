@@ -8,8 +8,11 @@ import { enviroment } from '../../enviroment'
 })
 export class OrganizationService {
 
-  private url = 'http://localhost:3000/api/customers/?format=json';
-  
+  private allCurstomersurl = 'http://localhost:3000/api/customers/?format=json';
+  private schedulePerCustomerurl = 'http://localhost:3000/api/ocs/?format=json&customer='
+  private schedulePerCustomerLimit ='&limit=25&ordering=-updated&page=1'
+  private oncallPerScheduleUrl='http://localhost:3000/api/ocs-tier/'
+  private oncallPerScheduleTier='_1/?format=json'
   authorization=enviroment.mv_token
   constructor(private http: HttpClient) { }
 
@@ -21,8 +24,26 @@ export class OrganizationService {
       'Authorization': this.authorization,
     });
 
-    return this.http.get(this.url, { headers });
+    return this.http.get(this.allCurstomersurl, { headers });
   }
 
 
+  getScheduleForCustomer(CustomerNumber:number):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.authorization,
+    });
+    const url =`${this.schedulePerCustomerurl}${CustomerNumber}${this.schedulePerCustomerLimit}`
+    return this.http.get(url,{headers})
+  }
+
+
+  getOncallPerSchedule(scheduleNumber:number):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.authorization,
+    });
+    const url =`${this.oncallPerScheduleUrl}${scheduleNumber}${this.oncallPerScheduleTier}`
+    return this.http.get(url,{headers})
+  }
 }
