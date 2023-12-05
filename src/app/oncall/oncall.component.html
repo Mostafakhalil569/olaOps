@@ -4,12 +4,11 @@
   <div *ngIf="oncallDetails" class="name-with-indicator">
     <div class="Tier-select" style="width:100px;">
       
-      <select>
-        
-        <option value="0">Tier 1</option>
-        <option value="1">Tier 2</option>
-        <option value="2">Tier 3</option>
-        <option value="3">Tier 4</option>
+      <select #tier (change)="checkTier(tier.value)"> 
+        <option value="1">Tier 1</option>
+        <option value="2">Tier 2</option>
+        <option value="3">Tier 3</option>
+        <option value="4">Tier 4</option>
       </select>
     </div>
     
@@ -20,276 +19,23 @@
   <div *ngIf="!oncallDetails">
     <p>No matching contact found.</p>
   </div>
-</ng-template>
-
-<div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="row day-columns">
-          <div class="day-column">
-            <div class="day-header">Monday</div>
-            <div class="day-content">
-              <div class="event gray">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>4 Assets</span>
-                    <span>20:00</span>
-                  </footer>
-              </div>
-              <div class="event orange">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>3 Assets</span>
-                    <span>21:30</span>
-                  </footer>
-              </div>
-              <div class="event red">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                  </footer>
-              </div>
-              <div class="event blue">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                  </footer>
-              </div>
+  <br><br>
+  <div *ngIf="oncallDetails" class="content">
+    <div class="card">
+        <div class="firstinfo"><img src="https://bootdey.com/img/Content/avatar/avatar6.png" />
+            <div class="profileinfo">
+                <h1>{{ oncallDetails.full_name }}</h1>
+                <p class="bio"><i class="fa fa-envelope" aria-hidden="true"></i>{{oncallDetails.email}}</p>
+                <p class="bio"><i class="fa fa-phone" aria-hidden="true"></i>{{oncallDetails.phone}}</p>
+                <p class="bio"><i class="fa fa-phone" aria-hidden="true"></i>{{current_since}} - {{current_until}}</p>
             </div>
-            <div class="day-footer"></div>
-          </div>
-          <div class="day-column">
-            <div class="day-header">Tuesday</div>
-            <div class="day-content">
-              <div class="event purple">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-              
-              <div class="event blue">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-            </div>
-            <div class="day-footer"></div>
-          </div>
-          <div class="day-column">
-            <div class="day-header">Wednesday</div>
-            <div class="day-content">
-              <div class="event yellow">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-              <div class="event navy">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-              <div class="event red">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-              <div class="event blue">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-            </div>
-            <div class="day-footer"></div>
-          </div>
-          <div class="day-column">
-            <div class="day-header">Thursday</div>
-            <div class="day-content">
-              <div class="event purple">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-              <div class="event navy">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-              <div class="event orange">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-              <div class="event red">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-              <div class="event blue">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-            </div>
-            <div class="day-footer"></div>
-          </div>
-          <div class="day-column">
-            <div class="day-header">Friday</div>
-            <div class="day-content">
-              <div class="event purple">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-              <div class="event navy">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-               <div class="event yellow">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-              <div class="event navy">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-              <div class="event red">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-              <div class="event blue">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-              <div class="event orange">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-            </div>
-            <div class="day-footer"></div>
-          </div>
-          <div class="day-column">
-            <div class="day-header">Saturday</div>
-            <div class="day-content">
-              <div class="event purple">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-              <div class="event navy">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-              <div class="event red">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-              <div class="event blue">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-            </div>
-            <div class="day-footer"></div>
-          </div>
-          <div class="day-column">
-            <div class="day-header">Sunday</div>
-            <div class="day-content">
-              <div class="event gray">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-              <div class="event blue">
-                  <span class="title">Event Name</span>
-                  <footer>
-                    <span>Prop1</span>
-                    <span>20:30</span>
-                    
-                  </footer>
-              </div>
-            </div>
-            <div class="day-footer"></div>
-          </div>
         </div>
-      </div>
+    </div>
+    <div class="badgescard"> 
+        <span ><i class="fa fa-phone" aria-hidden="true"></i></span>
+
     </div>
   </div>
+
+</ng-template>
+

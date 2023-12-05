@@ -1,115 +1,134 @@
-.green {
-  background-color: #2ecc71;
+@import "https://fonts.googleapis.com/css?family=Open+Sans:300,400";
+body,
+.badgescard,
+.firstinfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.turquoise {
-  background-color: #1abc9c;
+
+
+
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
 }
 
-.navy {
-  background-color: #34495e;
-}
-
-.blue {
-  background-color: #3498db;
-}
-
-.purple {
-  background-color: #9b59b6;
-}
-
-.grey {
-  background-color: #bdc3c7;
-  color: #202020;
-}
-
-.gray {
-  background-color: #7f8c8d;
-}
-
-.red {
-  background-color: #e74c3c;
-}
-
-.orange {
-  background-color: #f39c12;
-}
-
-.yellow {
-  background-color: #f1c40f;
-  color: #303030;
-}
-
-.day-columns {
+.content {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  justify-content: center;
+    position: relative;
+    animation: animatop 0.9s cubic-bezier(0.425, 1.14, 0.47, 1.125) forwards;
+    justify-content: center;
 }
 
-.day-columns .day-column {
+.card {
+    width: 500px;
+    min-height: 100px;
+    padding: 20px;
+    border-radius: 3px;
+    background-color: white;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.card:after {
+    content: '';
+    display: block;
+    width: 190px;
+    height: 300px;
+    background: cadetblue;
+    position: absolute;
+    animation: rotatemagic 0.75s cubic-bezier(0.425, 1.04, 0.47, 1.105) 1s both;
+}
+
+.badgescard {
   display: flex;
-  flex: 1;
-  flex-direction: column;
-  height: 300px; /* Adjusted height */
-  min-width: 120px; /* Adjusted min-width */
-  border: 1px solid #ebedf2;
-  border-left: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    background-color: #00bcd4;
+    color:#fff;
+    width: 480px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    z-index: -1;
+    animation: animainfos 0.5s cubic-bezier(0.425, 1.04, 0.47, 1.105) 0.75s forwards;
 }
 
-.day-columns .day-column:first-child {
-  border-left: 1px solid #ebedf2;
+.badgescard span {
+    font-size: 1.6em;
+    margin: 0px 6px;
+    opacity: 0.6;
 }
 
-.day-columns .day-column .day-header {
-  border-bottom: 1px solid #ebedf2;
-  text-align: center;
-  padding: 5px;
-  color: #898b96;
+.firstinfo {
+    flex-direction: row;
+    z-index: 2;
+    position: relative;
 }
 
-.day-columns .day-column .day-content {
-  flex-grow: 1;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 5px;
-  overflow-y: auto;
+.firstinfo img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
 }
 
-.day-columns .day-column .day-content .event {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin-bottom: 5px;
-  border-radius: 5px;
-  padding: 3px;
-  color: white;
-  padding: 5px;
-  box-shadow: 0px 1px 10px 1px rgba(81, 77, 92, 0.08); /* Adjusted box-shadow */
+.firstinfo .profileinfo {
+    padding: 0px 20px;
 }
 
-.day-columns .day-column .day-content .event .title {
-  font-size: 10px; /* Adjusted font-size */
+.firstinfo .profileinfo h1 {
+    font-size: 1.8em;
 }
 
-.day-columns .day-column .day-content .event footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  font-size: 9px; /* Adjusted font-size */
+.firstinfo .profileinfo h3 {
+    font-size: 1.2em;
+    color: #00bcd4;
+    font-style: italic;
 }
 
-.day-columns .day-column .day-footer {
-  border-top: 1px solid #ebedf2;
-  padding: 5px;
-  text-align: center;
-  font-size: 11px; /* Adjusted font-size */
-  color: #575962;
+.firstinfo .profileinfo p.bio {
+    padding: 5px 0px;
+    color: #5A5A5A;
+    line-height: 0.8;
+    font-style: initial;
 }
 
-.container {
-  margin-top: 20px;
+@keyframes animatop {
+    0% {
+        opacity: 0;
+        bottom: -500px;
+    }
+    100% {
+        opacity: 1;
+        bottom: 0px;
+    }
+}
+
+@keyframes animainfos {
+    0% {
+        bottom: 10px;
+    }
+    100% {
+        bottom: -42px;
+    }
+}
+
+@keyframes rotatemagic {
+    0% {
+        opacity: 0;
+        transform: rotate(0deg);
+        top: -24px;
+        left: -253px;
+    }
+    100% {
+        transform: rotate(-30deg);
+        top: -24px;
+        left: -78px;
+    }
 }
 .name-with-indicator {
   display: flex;

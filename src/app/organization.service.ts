@@ -12,7 +12,7 @@ export class OrganizationService {
   private schedulePerCustomerurl = 'http://localhost:3000/api/ocs/?format=json&customer='
   private schedulePerCustomerLimit ='&limit=25&ordering=-updated&page=1'
   private oncallPerScheduleUrl='http://localhost:3000/api/ocs-tier/'
-  private oncallPerScheduleTier='_1/?format=json'
+  private oncallPerScheduleTier='/?format=json'
   authorization=enviroment.mv_token
   constructor(private http: HttpClient) { }
 
@@ -38,12 +38,12 @@ export class OrganizationService {
   }
 
 
-  getOncallPerSchedule(scheduleNumber:number):Observable<any>{
+  getOncallPerSchedule(scheduleNumber:number,tierNumber:number):Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': this.authorization,
     });
-    const url =`${this.oncallPerScheduleUrl}${scheduleNumber}${this.oncallPerScheduleTier}`
+    const url =`${this.oncallPerScheduleUrl}${scheduleNumber}_${tierNumber}${this.oncallPerScheduleTier}`
     return this.http.get(url,{headers})
   }
 }

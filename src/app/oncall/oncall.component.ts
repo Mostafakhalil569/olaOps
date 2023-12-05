@@ -1,6 +1,8 @@
 import { Component,Input,OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrganizationService } from '../organization.service';
+import { Organization } from '../organization';
+import { MmgService } from '../mmg.service';
 
 
 @Component({
@@ -13,10 +15,30 @@ import { OrganizationService } from '../organization.service';
   
 export class OncallComponent {
   oncallDetails:object |any
-  constructor(private organization:OrganizationService){}
+  constructor(private organization:OrganizationService,private mmgService:MmgService){}
   customerId:number | undefined;
   scheduleID:number | undefined;
+  current_since:any; 
+  current_until:any;
+  
+  formatHoursAndMinutes(dateString: string): string | undefined {
+    const dateObject: Date = new Date(dateString);
+    console.log(dateObject)
+    if (isNaN(dateObject.getTime())) {
+        // Invalid date-time string
+        return undefined;
+    }
 
+    const hours: number = dateObject.getUTCHours();
+    const minutes: number = dateObject.getUTCMinutes();
+
+    // Format hours and minutes
+    const formattedTime: string = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+    
+    return formattedTime;
+}
+  
+  // oncallTier:number | undefined;
   loading=true
   
   @Input() inputDataID:any
@@ -30,19 +52,80 @@ export class OncallComponent {
       return null
     }
   }
+  oncallTier = 1;
+
+  checkTier(tierNumber: string) {
+    if (tierNumber !== null) {
+      this.oncallTier = parseInt(tierNumber, 10);
+    }
+    this.organization.getScheduleForCustomer(this.checkdata()).subscribe((res) => {
+      if (res.results && res.results.length > 0) {
+        if(res.results.some( (schedule: { name: string; }) => schedule.name === "MMG On-call")){
+          
+          if(this.mmgService.isWorkingHours()) {
+            
+        this.scheduleID = res.results[1].id;
+          }else{
+          
+        this.scheduleID = res.results[0].id;
+          }
+        }else{
+        this.scheduleID = res.results[0].id;
+        }
+  
+        this.organization.getOncallPerSchedule(this.scheduleID ?? 0, this.oncallTier).subscribe((oncallRes) => {
+          this.current_since = this.formatHoursAndMinutes(oncallRes.current_since)
+          this.current_until = this.formatHoursAndMinutes(oncallRes.current_until)
+          
+          const currentOncallId = oncallRes.current;
+          const currentoncall = oncallRes.contacts.find((contact: any) => contact.id === currentOncallId);
+  
+          if (currentoncall || this.oncallTier) {
+            this.oncallDetails = currentoncall;
+            
+          } else {
+            console.log('No matching contact found.');
+          }
+        }, (oncallError) => {
+          console.error('Error fetching oncall details:', oncallError);
+        }).add(() => {
+          this.loading = false; 
+        });
+      } else {
+        console.log('No schedule results found.');
+        this.loading = false; 
+      }
+    }, (scheduleError) => {
+      console.error('Error fetching schedule:', scheduleError);
+      this.loading = false; 
+    });
+
+  }
+ 
+
 
   ngOnInit(): void {
     this.organization.getScheduleForCustomer(this.checkdata()).subscribe((res) => {
       if (res.results && res.results.length > 0) {
+        if(res.results.some( (schedule: { name: string; }) => schedule.name === "MMG On-call")){
+          if(this.mmgService.isWorkingHours()) { 
+        this.scheduleID = res.results[1].id;
+          }else{
         this.scheduleID = res.results[0].id;
-  
-        this.organization.getOncallPerSchedule(this.scheduleID ?? 0).subscribe((oncallRes) => {
+          }
+        }else{
+        this.scheduleID = res.results[0].id;
+        }
+        this.organization.getOncallPerSchedule(this.scheduleID ?? 0, 1).subscribe((oncallRes) => {
+          console.log(oncallRes.current_since)
+          this.current_since = this.formatHoursAndMinutes(oncallRes.current_since)
+          this.current_until = this.formatHoursAndMinutes(oncallRes.current_until)
           const currentOncallId = oncallRes.current;
           const currentoncall = oncallRes.contacts.find((contact: any) => contact.id === currentOncallId);
   
           if (currentoncall) {
             this.oncallDetails = currentoncall;
-            console.log(this.oncallDetails)
+            
           } else {
             console.log('No matching contact found.');
           }
