@@ -1,0 +1,11 @@
+<div class="grid-box">
+    <div class="grid-container">
+      <div *ngFor="let item of activeAlerts; let i = index" class="grid-item" (click)="handleCopy(item.subject + ' - ' + item.host, i)" [class.grid-item-clicked]="i === clickedItemIndex">
+        <span class="alert-info">Alert info: {{ item.subject }}</span>
+        <span class="host">Host: {{ item.host }}</span>
+      </div>
+    </div>
+  </div>
+
+
+  

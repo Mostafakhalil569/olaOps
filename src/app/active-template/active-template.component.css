@@ -1,0 +1,40 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust the min and max width as needed */
+    gap: 16px; /* Adjust the gap between columns */
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+  }
+  
+  .grid-item {
+    background-color: #e0e0e0;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  
+  .grid-item span {
+    margin-bottom: 8px;
+    overflow-wrap: break-word; /* Allow the subject to wrap to the next line */
+  }
+  
+  .grid-item-clicked {
+    background-color: #c0c0c0;
+    animation: fadeInOut 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  @keyframes fadeInOut {
+    0%, 100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }

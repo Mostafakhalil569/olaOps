@@ -1,9 +1,10 @@
 <div class="button-container">
     <button (click)="showComponent(1)"  class="btn btn-primary">OnCall</button>
     <button (click)="showComponent(2)" class="btn btn-primary">Open Jira Ticket</button>
-    <button (click)="showComponent(3)" *ngIf="organization.isStatusPageAvailable" class="btn btn-primary">Status Page</button>
+    <button (click)="showComponent(3)"  class="btn btn-primary">Templates</button>
   </div>
   <div class="button-content">
   <app-oncall *ngIf="selectedComponent === 1" [inputDataID]="organization" (close)="hideComponent(1)"></app-oncall>
   <app-jira *ngIf="selectedComponent === 2" (close)="hideComponent(2)"></app-jira>
+  <app-active-template *ngIf="selectedComponent === 3" (close)="hideComponent(3)" [inputDataID]="organization"></app-active-template>
 </div>

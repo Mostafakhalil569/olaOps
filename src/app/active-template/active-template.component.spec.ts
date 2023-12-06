@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AllInOneCallsComponent } from './all-in-one-calls.component';
+import { ActiveTemplateComponent } from './active-template.component';
 
-describe('AllInOneCallsComponent', () => {
-  let component: AllInOneCallsComponent;
-  let fixture: ComponentFixture<AllInOneCallsComponent>;
+describe('ActiveTemplateComponent', () => {
+  let component: ActiveTemplateComponent;
+  let fixture: ComponentFixture<ActiveTemplateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AllInOneCallsComponent]
+      imports: [ActiveTemplateComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(AllInOneCallsComponent);
+    fixture = TestBed.createComponent(ActiveTemplateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

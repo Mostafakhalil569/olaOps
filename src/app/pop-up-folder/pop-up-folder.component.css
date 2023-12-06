@@ -5,6 +5,10 @@ body {
     height: 100vh;
     margin: 0;
   }
+  :host {
+    display: block;
+    /* Add other styles as needed */
+  }
   
   .button-container {
     text-align: center;
