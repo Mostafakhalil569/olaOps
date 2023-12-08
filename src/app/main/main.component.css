@@ -1,15 +1,18 @@
 .icon-wrapper{
     display: grid;
-  grid-template-columns: 300px 300px 300px 300px;  
-  gap: 16px;
-  box-sizing: border-box;
+  grid-template-columns: 250px 250px 250px 250px 250px;  
+  gap: 16px; 
+  box-sizing: border-box; 
 
 }
 @media screen and (max-width: 1100px) {
   .icon-wrapper {
-    grid-template-columns: 100px 100px 100px 100px;  
+    grid-template-columns: 70x 70px 70px 70px;
+      
   }
 }
+ 
+
 .icon-costumer{
     margin: 20px;
    text-align: center;

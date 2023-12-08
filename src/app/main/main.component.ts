@@ -47,7 +47,7 @@ ngOnInit():void{
   //   }))
   // }
   shouldIgnore(organization:any):boolean{
-    const ignore =['Artlist.io','FeedVisor','GreenRoad','Sisense','Trafficpoint','Taboola','Milloh-CS']
+    const ignore =['Artlist.io','FeedVisor','GreenRoad','Sisense','Trafficpoint','Taboola','Milloh-CS','ArmisSecurity']
     return ignore.includes(organization.name)
   }
 

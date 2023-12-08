@@ -7,7 +7,7 @@ body {
   }
   :host {
     display: block;
-    /* Add other styles as needed */
+  
   }
   
   .button-container {
