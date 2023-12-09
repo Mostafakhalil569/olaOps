@@ -20,22 +20,25 @@
     <p>No matching contact found.</p>
   </div>
   <br><br>
-  <div *ngIf="oncallDetails" class="content">
-    <div class="card">
-        <div class="firstinfo"><img src="https://bootdey.com/img/Content/avatar/avatar6.png" />
-            <div class="profileinfo">
-                <h1>{{ oncallDetails.full_name }}</h1>
-                <p class="bio"><i class="fa fa-envelope" aria-hidden="true"></i>{{oncallDetails.email}}</p>
-                <p class="bio"><i class="fa fa-phone" aria-hidden="true"></i>{{oncallDetails.phone}}</p>
-                <p class="bio"><i class="fa fa-phone" aria-hidden="true"></i>{{current_since}} - {{current_until}}</p>
-            </div>
-        </div>
+  <div *ngIf="oncallDetails" class="container">
+  <div class="grid-container">
+    <div class="oblong">
+      <span class="icon">📞</span>
+      <span class="text">{{oncallDetails.phone}}</span>
     </div>
-    <div class="badgescard"> 
-        <span ><i class="fa fa-phone" aria-hidden="true"></i></span>
-
+    <div class="oblong">
+      <span class="icon" style="color: blue;">📧</span>
+      <span class="text">{{oncallDetails.email}}</span>
+    </div>
+    <div class="oblong">
+      <span class="icon">&#x23F0;</span>
+      <span class="text">{{current_since}} - {{current_until}}</span>
+    </div>
+    <div class="oblong">
+<span class="icon" style="color: #333;">🔍</span>
+      <span class="text">{{ getchannelName(oncallDetails.customer) }}</span>
     </div>
   </div>
-
+</div>
 </ng-template>
 

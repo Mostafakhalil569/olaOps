@@ -31,3 +31,8 @@ export interface Parent {
     results: Schedule[];
     next_page: string | null;
   }
+
+  export interface whereToFindMe {
+    id:number;
+    ChannelName:String;
+  }
