@@ -41,3 +41,15 @@ body {
     transform: translate(-50%, -50%);
     
   }
+
+  .customer-name{
+    float: left;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    color: #fff; /* Text color */
+    background-color: #3498db; /* Background color */
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+   
+  }
