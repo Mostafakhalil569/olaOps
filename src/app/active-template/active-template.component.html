@@ -1,8 +1,16 @@
+<input type="checkbox" [(ngModel)]="showCustomer"> Customer
+<input type="checkbox" [(ngModel)]="showHost"> Host
 <div class="grid-box">
+ 
     <div class="grid-container">
+ 
+<!-- Add checkboxes for other properties as needed -->
+
       <div *ngFor="let item of activeAlerts; let i = index" class="grid-item" (click)="handleCopy(item.subject + ' - ' + item.host, i)" [class.grid-item-clicked]="i === clickedItemIndex">
         <span class="alert-info">Alert info: {{ item.subject }}</span>
-        <span class="host">Host: {{ item.host }}</span>
+        <span *ngIf="item.value !=null"class="host">value: {{ item.value }}</span>
+        <span *ngIf="item.service"class="host">service: {{ item.service }}</span>
+        <span *ngIf="item.service"class="host">service: {{ item.custom_fields }}</span>
       </div>
     </div>
   </div>

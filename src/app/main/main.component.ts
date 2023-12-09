@@ -47,7 +47,7 @@ ngOnInit():void{
   //   }))
   // }
   shouldIgnore(organization:any):boolean{
-    const ignore =['Artlist.io','FeedVisor','GreenRoad','Sisense','Trafficpoint','Taboola','Milloh-CS','ArmisSecurity']
+    const ignore =['Artlist.io','FeedVisor','GreenRoad','Sisense','Trafficpoint','Taboola','Milloh-CS']
     return ignore.includes(organization.name)
   }
 
@@ -58,5 +58,8 @@ ngOnInit():void{
     console.error("this.data is not an array")
     return[];
   }
+
+
+  
   }
 }

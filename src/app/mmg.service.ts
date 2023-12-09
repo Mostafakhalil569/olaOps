@@ -15,11 +15,11 @@ export class MmgService {
     const hours = now.getHours()
     const minutes = now.getMinutes()
 
-    if(dayOfWeek>=0 && dayOfWeek <=5){
+    if(dayOfWeek>=0 && dayOfWeek <=4){
       if((hours === 8 && minutes >= 0) || (hours > 8 && hours < 20) || (hours === 20 && minutes >=0)){
         return true
       }
     }
-    return false
+    return false 
   }
 }

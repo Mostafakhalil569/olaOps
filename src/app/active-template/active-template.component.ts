@@ -3,15 +3,19 @@ import { CommonModule } from '@angular/common';
 import ClipboardJS from 'clipboard';
 import { ChangeDetectorRef } from '@angular/core';
 import { OrganizationService } from '../organization.service';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-active-template',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './active-template.component.html',
   styleUrl: './active-template.component.css'
 })
 export class ActiveTemplateComponent {
+  showCustomer: boolean = false;
+  showHost: boolean = false;
   constructor(private cdr: ChangeDetectorRef , private organization:OrganizationService) {}
   @Input() inputDataID:any
   customerId:number | undefined;
@@ -43,7 +47,10 @@ export class ActiveTemplateComponent {
   ngOnInit(): void {
     this.organization.getActiveAlertsPerorganization(this.inputDataID.id).subscribe((res)=> {
       this.activeAlerts=res.results
+      
+
     })
+   
   }
   
 }

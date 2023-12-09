@@ -18,14 +18,13 @@
   margin-right: 10px;
 }
 
-.app-name {
-  margin: 0;
-}
 
+.pen-icon,
 .settings-icon {
   cursor: pointer;
   font-size: 25px;
-  margin-right: 10px;
+  margin-right: 20px;
+  
 
 }
 .settings-icon:hover{
@@ -38,4 +37,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+.icons{
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
 }
