@@ -70,10 +70,10 @@ export class OncallComponent {
           
           if(this.mmgService.isWorkingHours()) {
             
-        this.scheduleID = res.results[1].id;
+            this.scheduleID = 191
           }else{
           
-        this.scheduleID = res.results[0].id;
+            this.scheduleID = 237
           }
         }else{
         this.scheduleID = res.results[0].id;
@@ -116,9 +116,9 @@ export class OncallComponent {
       if (res.results && res.results.length > 0) {
         if(res.results.some( (schedule: { name: string; }) => schedule.name === "MMG On-call")){
           if(this.mmgService.isWorkingHours()) { 
-        this.scheduleID = res.results[1].id;
+        this.scheduleID = 191
           }else{
-        this.scheduleID = res.results[0].id;
+        this.scheduleID = 237
           }
         }else{
         this.scheduleID = res.results[0].id;

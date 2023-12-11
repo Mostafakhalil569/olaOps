@@ -14,7 +14,7 @@ export class MmgService {
     const dayOfWeek = now.getDay()
     const hours = now.getHours()
     const minutes = now.getMinutes()
-
+    console.log(hours)
     if(dayOfWeek>=0 && dayOfWeek <=4){
       if((hours === 8 && minutes >= 0) || (hours > 8 && hours < 20) || (hours === 20 && minutes >=0)){
         return true
