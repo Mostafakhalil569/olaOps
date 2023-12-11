@@ -8,12 +8,12 @@ import { Observable } from 'rxjs';
 })
 export class OrganizationService {
 
-  private allCurstomersurl = 'http://localhost:3000/api/customers/?format=json';
-  private schedulePerCustomerurl = 'http://localhost:3000/api/ocs/?format=json&customer='
+  private allCurstomersurl = 'https://api.xiteit.co/api/customers/?format=json';
+  private schedulePerCustomerurl = 'https://api.xiteit.co/api/ocs/?format=json&customer='
   private schedulePerCustomerLimit ='&limit=25&ordering=-updated&page=1'
-  private oncallPerScheduleUrl='http://localhost:3000/api/ocs-tier/'
+  private oncallPerScheduleUrl='https://api.xiteit.co/api/ocs-tier/'
   private oncallPerScheduleTier='/?format=json'
-  private activeAlertsperOrganization='http://localhost:3000/api/events/?page=1&limit=25&status=active&open_alerts=%7B%7D&group_by=host&format=json&customer='
+  private activeAlertsperOrganization='https://api.xiteit.co/api/events/?page=1&limit=25&status=active&open_alerts=%7B%7D&group_by=host&format=json&customer='
   //authorization=enviroment.mv_token
   authorization="Token 5pp-025696b08543d72bdcd4"
   
