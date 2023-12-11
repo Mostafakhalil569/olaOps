@@ -14,7 +14,9 @@ export class OrganizationService {
   private oncallPerScheduleUrl='http://localhost:3000/api/ocs-tier/'
   private oncallPerScheduleTier='/?format=json'
   private activeAlertsperOrganization='http://localhost:3000/api/events/?page=1&limit=25&status=active&open_alerts=%7B%7D&group_by=host&format=json&customer='
-  authorization=enviroment.mv_token
+  //authorization=enviroment.mv_token
+  authorization=Token 5pp-025696b08543d72bdcd4
+  
   constructor(private http: HttpClient) { }
 
 
