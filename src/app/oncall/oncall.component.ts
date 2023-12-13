@@ -172,5 +172,9 @@ export class OncallComponent {
  const channel = contactCustomer.find(item => item.id === id)
  return channel?.ChannelName ?? 'None';
  }
+
+
+
+ 
   
 }

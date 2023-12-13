@@ -8,12 +8,12 @@ import { enviroment } from '../../enviroment'
 })
 export class OrganizationService {
 
-  private allCurstomersurl = 'http://localhost:3000/api/customers/?format=json';
-  private schedulePerCustomerurl = 'http://localhost:3000/api/ocs/?format=json&customer='
+  private allCurstomersurl = 'https://olaops-server.onrender.com/api/customers/?format=json';
+  private schedulePerCustomerurl = 'https://olaops-server.onrender.com/api/ocs/?format=json&customer='
   private schedulePerCustomerLimit ='&limit=25&ordering=-updated&page=1'
-  private oncallPerScheduleUrl='http://localhost:3000/api/ocs-tier/'
+  private oncallPerScheduleUrl='https://olaops-server.onrender.com/api/ocs-tier/'
   private oncallPerScheduleTier='/?format=json'
-  private activeAlertsperOrganization='http://localhost:3000/api/events/?page=1&limit=25&status=active&open_alerts=%7B%7D&group_by=host&format=json&customer='
+  private activeAlertsperOrganization='https://olaops-server.onrender.com/api/events/?page=1&limit=25&status=active&open_alerts=%7B%7D&group_by=host&format=json&customer='
   authorization=enviroment.mv_token
   constructor(private http: HttpClient) { }
 

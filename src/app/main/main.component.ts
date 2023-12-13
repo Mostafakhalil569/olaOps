@@ -36,9 +36,9 @@ ngOnInit():void{
 
   this.organization.getallorganization().subscribe((res)=> {
     this.data=res.children;
-    console.log(res.children)
   })
 
+ 
 }
   // addIsOncallAvailableAttribute(data:any[]): any{
   //   return data.map(item =>({
@@ -62,4 +62,5 @@ ngOnInit():void{
 
   
   }
+  
 }
