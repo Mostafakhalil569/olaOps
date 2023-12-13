@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 })
 export class OrganizationService {
 
-<<<<<<< HEAD
   private allCurstomersurl = 'https://olaops-server.onrender.com/api/customers/?format=json';
   private schedulePerCustomerurl = 'https://olaops-server.onrender.com/api/ocs/?format=json&customer='
   private schedulePerCustomerLimit ='&limit=25&ordering=-updated&page=1'
@@ -16,17 +15,7 @@ export class OrganizationService {
   private oncallPerScheduleTier='/?format=json'
   private activeAlertsperOrganization='https://olaops-server.onrender.com/api/events/?page=1&limit=25&status=active&open_alerts=%7B%7D&group_by=host&format=json&customer='
   authorization=enviroment.mv_token
-=======
-  private allCurstomersurl = 'https://api.xiteit.co/api/customers/?format=json';
-  private schedulePerCustomerurl = 'https://api.xiteit.co/api/ocs/?format=json&customer='
-  private schedulePerCustomerLimit ='&limit=25&ordering=-updated&page=1'
-  private oncallPerScheduleUrl='https://api.xiteit.co/api/ocs-tier/'
-  private oncallPerScheduleTier='/?format=json'
-  private activeAlertsperOrganization='https://api.xiteit.co/api/events/?page=1&limit=25&status=active&open_alerts=%7B%7D&group_by=host&format=json&customer='
-  //authorization=enviroment.mv_token
-  authorization="Token 5pp-025696b08543d72bdcd4"
-  
->>>>>>> 4dc82d25ef5a7051877bab85310eaf6927d83e91
+
   constructor(private http: HttpClient) { }
 
 
