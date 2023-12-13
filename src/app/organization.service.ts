@@ -14,7 +14,7 @@ export class OrganizationService {
   private oncallPerScheduleUrl='https://olaops-server.onrender.com/api/ocs-tier/'
   private oncallPerScheduleTier='/?format=json'
   private activeAlertsperOrganization='https://olaops-server.onrender.com/api/events/?page=1&limit=25&status=active&open_alerts=%7B%7D&group_by=host&format=json&customer='
-  authorization=enviroment.mv_token
+  authorization='Token 5pp-025696b08543d72bdcd4'
 
   constructor(private http: HttpClient) { }
 
