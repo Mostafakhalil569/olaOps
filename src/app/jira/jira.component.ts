@@ -10,9 +10,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './jira.component.css'
 })
 export class JiraComponent {
-  constructor(){}
-  
-
-
 
 }
